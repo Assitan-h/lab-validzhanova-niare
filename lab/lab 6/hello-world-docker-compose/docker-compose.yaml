@@ -1,0 +1,23 @@
+version: '3'
+services:
+  redis:
+    image: redis
+  web:
+    # COMPLETE HERE
+    depends_on: 
+      - redis
+    build: .
+    ports:
+      - "5000:8080"
+    environment:
+      REDIS_HOST : redis
+      REDIS_PORT : 6379
+    volumes : 
+      - "/data"
+
+#When we restart the container, the count restart from zero because 
+#we don't store the value
+#to store the value we have to add a volume and configure to read and write
+
+      
+      
